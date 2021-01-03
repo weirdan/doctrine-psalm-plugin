@@ -14,6 +14,13 @@ Feature: ServiceEntityRepository
         <plugins>
           <pluginClass class="Weirdan\DoctrinePsalmPlugin\Plugin" />
         </plugins>
+        <issueHandlers>
+          <DeprecatedInterface>
+            <errorLevel type="suppress">
+              <referencedClass name="Doctrine\Common\Persistence\ObjectRepository"/>
+            </errorLevel>
+          </DeprecatedInterface>
+        </issueHandlers>
       </psalm>
       """
     And I have the following code preamble

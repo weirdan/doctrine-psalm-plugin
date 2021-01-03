@@ -1,6 +1,6 @@
 <?php
 
-namespace Doctrine\Common\Persistence;
+namespace Doctrine\Persistence;
 
 interface ObjectManager
 {

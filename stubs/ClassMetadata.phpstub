@@ -1,6 +1,6 @@
 <?php
 
-namespace Doctrine\Common\Persistence\Mapping;
+namespace Doctrine\Persistence\Mapping;
 
 /** @template T */
 interface ClassMetadata

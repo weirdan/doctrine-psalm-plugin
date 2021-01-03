@@ -19,7 +19,7 @@ Feature: ObjectRepository
     And I have the following code preamble
       """
       <?php
-      use Doctrine\Common\Persistence\ObjectRepository;
+      use Doctrine\Persistence\ObjectRepository;
 
       interface I {
         /** @return void */
