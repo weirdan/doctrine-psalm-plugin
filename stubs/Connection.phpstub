@@ -44,7 +44,7 @@ class Connection implements DriverConnection
      * @throws DBALException
      * @psalm-taint-sink sql $statement
      */
-    public function prepare(string $statement): DriverStatement {}
+    public function prepare(string $statement): Statement {}
 
     /**
      * @psalm-taint-sink sql $statement
