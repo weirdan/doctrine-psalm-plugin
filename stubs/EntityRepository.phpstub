@@ -14,13 +14,22 @@ use Doctrine\Common\Persistence\ObjectRepository;
  */
 class EntityRepository implements ObjectRepository, Selectable
 {
-    /** @var string */
+    /**
+     * @var string
+     * @psalm-supress PropertyNotSetInConstructor
+     */
     protected $_entityName;
 
-    /** @var EntityManagerInterface */
+    /**
+     * @var EntityManagerInterface
+     * @psalm-supress PropertyNotSetInConstructor
+     */
     protected $_em;
 
-    /** @var Mapping\ClassMetadata */
+    /**
+     * @var Mapping\ClassMetadata
+     * @psalm-supress PropertyNotSetInConstructor
+     */
     protected $_class;
 
     /** @param Mapping\ClassMetadata<T> $class */
