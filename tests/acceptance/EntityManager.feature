@@ -55,7 +55,7 @@ Feature: EntityManager
     When I run Psalm
     Then I see these errors
       | Type                  | Message                                                                                         |
-      | InvalidScalarArgument | Argument 1 of Doctrine\ORM\EntityManager::getRepository expects class-string, int(123) provided |
+      | InvalidScalarArgument | Argument 1 of Doctrine\ORM\EntityManager::getRepository expects class-string, 123 provided |
     And I see no other errors
 
   @EntityManager::find
@@ -79,7 +79,7 @@ Feature: EntityManager
     When I run Psalm
     Then I see these errors
       | Type                  | Message                                                                                |
-      | InvalidScalarArgument | Argument 1 of Doctrine\ORM\EntityManager::find expects class-string, int(123) provided |
+      | InvalidScalarArgument | Argument 1 of Doctrine\ORM\EntityManager::find expects class-string, 123 provided |
     And I see no other errors
 
   @EntityManager::getReference
@@ -103,7 +103,7 @@ Feature: EntityManager
     When I run Psalm
     Then I see these errors
       | Type                  | Message                                                                                        |
-      | InvalidScalarArgument | Argument 1 of Doctrine\ORM\EntityManager::getReference expects class-string, int(123) provided |
+      | InvalidScalarArgument | Argument 1 of Doctrine\ORM\EntityManager::getReference expects class-string, 123 provided |
     And I see no other errors
 
   @EntityManager::inheritance
