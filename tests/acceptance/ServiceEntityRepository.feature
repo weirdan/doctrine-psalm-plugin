@@ -82,8 +82,11 @@ Feature: ServiceEntityRepository
         /** @var RegistryInterface $registry */
         $repository = new ServiceEntityRepository($registry, I::class);
 
-        /** @param ServiceEntityRepository<I> $argument */
-        function assertTemplate($argument): void {}
+        /**
+         * @param ServiceEntityRepository<I> $argument
+         * @return void
+         */
+        function assertTemplate($argument) {}
         assertTemplate($repository);
         """
       When I run Psalm
@@ -101,8 +104,11 @@ Feature: ServiceEntityRepository
         /** @var RegistryInterface $registry */
         $repository = new ServiceEntityRepository($registry, I::class);
 
-        /** @param ServiceEntityRepository<I> $argument */
-        function assertTemplate($argument): void {}
+        /**
+         * @param ServiceEntityRepository<I> $argument
+         * @return void
+        */
+        function assertTemplate($argument) {}
         assertTemplate($repository);
         """
       When I run Psalm
