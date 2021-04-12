@@ -72,6 +72,25 @@ Feature: ServiceEntityRepository
 
     @ServiceEntityRepository::generics
       Scenario: Check template notation on ServiceEntityRepository
+      Given I have the "doctrine/persistence" package satisfying the "< 1.3"
+      And I have the following code
+        """
+        use Doctrine\Common\Persistence\ManagerRegistry as RegistryInterface;
+
+        interface I {}
+
+        /** @var RegistryInterface $registry */
+        $repository = new ServiceEntityRepository($registry, I::class);
+
+        /** @param ServiceEntityRepository<I> $argument */
+        function assertTemplate($argument): void {}
+        assertTemplate($repository);
+        """
+      When I run Psalm
+      Then I see no errors
+
+    @ServiceEntityRepository::generics
+      Scenario: Check template notation on ServiceEntityRepository
       Given I have the "doctrine/persistence" package satisfying the ">= 1.3"
       And I have the following code
         """
@@ -88,4 +107,3 @@ Feature: ServiceEntityRepository
         """
       When I run Psalm
       Then I see no errors
-
