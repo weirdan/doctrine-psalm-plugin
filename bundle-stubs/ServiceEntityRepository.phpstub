@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityRepository;
 class ServiceEntityRepository extends EntityRepository implements ServiceEntityRepositoryInterface
 {
     /**
-     * @param string $entityClass The class name of the entity this repository manages
+     * @param class-string<T> $entityClass The class name of the entity this repository manages
      */
     public function __construct(ManagerRegistry $registry, $entityClass)
     {
