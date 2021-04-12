@@ -35,7 +35,6 @@ Feature: ServiceEntityRepository
          * @method I|null findOneBy(array $criteria, array $orderBy = null)
          * @method list<I>    findAll()
          * @method list<I>    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
-         * @template-extends ServiceEntityRepository<I>
          * @psalm-suppress PropertyNotSetInConstructor
          */
         class IRepository extends ServiceEntityRepository {
@@ -60,7 +59,6 @@ Feature: ServiceEntityRepository
          * @method I|null findOneBy(array $criteria, array $orderBy = null)
          * @method list<I>    findAll()
          * @method list<I>    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
-         * @template-extends ServiceEntityRepository<I>
          * @psalm-suppress PropertyNotSetInConstructor
          */
         class IRepository extends ServiceEntityRepository {
@@ -68,6 +66,25 @@ Feature: ServiceEntityRepository
             parent::__construct($registry, I::class);
           }
         }
+        """
+      When I run Psalm
+      Then I see no errors
+
+    @ServiceEntityRepository::generics
+      Scenario: Check template notation on ServiceEntityRepository
+      Given I have the "doctrine/persistence" package satisfying the ">= 1.3"
+      And I have the following code
+        """
+        use Doctrine\Persistence\ManagerRegistry as RegistryInterface;
+
+        interface I {}
+
+        /** @var RegistryInterface $registry */
+        $repository = new ServiceEntityRepository($registry, I::class);
+
+        /** @param ServiceEntityRepository<I> $argument */
+        function assertTemplate($argument): void {}
+        assertTemplate($repository);
         """
       When I run Psalm
       Then I see no errors
